@@ -267,7 +267,6 @@ public class Message {
 			this.setLastModificationDate(stringValue);
 			break;
 		case 0x39: //CLIENT SUBMIT TIME
-			System.out.println("Submit Time = " + stringValue);
 			this.setClientSubmitTime(stringValue);
 			break;
 		default:
