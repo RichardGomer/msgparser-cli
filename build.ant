@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project msgparse-cli with Jar-in-Jar Loader">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+        <jar destfile="/home/richard/workspace/msgparse-cli/dist/msgparse-cli.jar">
+            <manifest>
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="net.kolola.msgparsercli.MsgParseCLI"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./ jopt-simple-4.8.jar junit-3.8.1.jar poi-3.9.jar poi-scratchpad-3.9.jar java-json.jar"/>
+            </manifest>
+            <zipfileset src="jar-in-jar-loader.zip"/>
+            <fileset dir="/home/richard/workspace/msgparse-cli/bin"/>
+            <zipfileset dir="/home/richard/workspace/msgparse-cli/lib" includes="jopt-simple-4.8.jar"/>
+            <zipfileset dir="/home/richard/workspace/msgparse-cli/lib" includes="junit-3.8.1.jar"/>
+            <zipfileset dir="/home/richard/workspace/msgparse-cli/lib" includes="poi-3.9.jar"/>
+            <zipfileset dir="/home/richard/workspace/msgparse-cli/lib" includes="poi-scratchpad-3.9.jar"/>
+            <zipfileset dir="/home/richard/workspace/msgparse-cli/lib" includes="java-json.jar"/>
+        </jar>
+    </target>
+</project>

@@ -6,9 +6,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Base64.Encoder;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Handler;
+import java.util.logging.Logger;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -58,7 +62,26 @@ public class MsgParseCLI {
         {
 			Map<String, Object> data = new HashMap<String, Object>(); 
 			
-			data.put("date", msg.getDate().toString());
+			String date;
+			
+			try
+			{
+				Date st = msg.getClientSubmitTime();
+				date = st.toString();
+			}
+			catch(Exception g)
+			{
+				try
+				{
+					date = msg.getDate().toString();
+				}
+				catch(Exception e)
+				{
+					date = "[UNAVAILABLE]";
+				}
+			}
+			
+			data.put("date", date);
 			data.put("subject", msg.getSubject());
 			data.put("from", "\"" + msg.getFromName() + "\" <" + msg.getFromEmail() + ">");
 			data.put("to", "\"" + msg.getToRecipient().toString());
